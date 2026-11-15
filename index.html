@@ -1,0 +1,256 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NEXUS GAMING STORE</title>
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;background:#090613;color:white;
+ font-family:Arial,sans-serif
+}
+header{
+ background:#130b24;padding:18px;
+ display:flex;justify-content:space-between;
+ align-items:center;flex-wrap:wrap;
+ border-bottom:2px solid #a020ff
+}
+.logo{
+ font-size:25px;font-weight:900;
+ color:#d18aff;text-shadow:0 0 15px #a020ff
+}
+nav{display:flex;gap:8px;flex-wrap:wrap}
+button{
+ border:0;border-radius:8px;padding:12px 16px;
+ background:linear-gradient(120deg,#7621e8,#c000ff);
+ color:white;font-weight:bold;cursor:pointer
+}
+nav button{background:#29183e}
+.hero{
+ text-align:center;padding:65px 15px;
+ background:linear-gradient(130deg,#210c42,#570a79,#100a22);
+ border-bottom:2px solid #a020ff
+}
+.hero h1{font-size:42px;color:#e4b6ff}
+.hero p{color:#ddd}
+section{padding:28px 5%;max-width:1250px;margin:auto}
+h2{color:#d49aff}
+.grid{
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+ gap:18px
+}
+.card{
+ background:#191126;border:1px solid #8234bc;
+ border-radius:13px;padding:13px;
+ box-shadow:0 0 15px #8700ff22
+}
+.art{
+ height:150px;border-radius:10px;
+ background:linear-gradient(135deg,#301052,#9d26d5,#10152e);
+ display:flex;align-items:center;justify-content:center;
+ font-size:55px
+}
+.card h3{color:#e4c3ff}
+.price{font-size:25px;color:#ffd34f;font-weight:bold}
+.card p{color:#bbb}
+.panel{
+ background:#191126;border:1px solid #8234bc;
+ padding:22px;border-radius:13px;margin-bottom:15px
+}
+input,select{
+ width:100%;padding:13px;margin:9px 0;
+ background:#0c0915;color:white;
+ border:1px solid #7439a2;border-radius:8px
+}
+.small{font-size:12px;color:#aaa}
+footer{
+ background:#130b24;text-align:center;
+ padding:25px;margin-top:30px;color:#bbb
+}
+.zalo{
+ position:fixed;bottom:18px;right:15px;
+ background:#087cff;border-radius:40px;
+ padding:14px;color:white;text-decoration:none;
+ font-weight:bold
+}
+@media(max-width:600px){
+ .hero h1{font-size:30px}
+ header{justify-content:center}
+ nav{justify-content:center}
+ nav button{padding:10px;font-size:12px}
+}
+</style>
+</head>
+<body>
+
+<header>
+ <div class="logo">✦ NEXUS GAMING</div>
+ <nav>
+  <button onclick="go('home')">Trang chủ</button>
+  <button onclick="go('shop')">Mua acc</button>
+  <button onclick="go('nap')">Nạp thẻ</button>
+  <button onclick="go('game')">Nạp game</button>
+  <button onclick="go('contact')">Liên hệ</button>
+ </nav>
+</header>
+
+<div class="hero" id="home">
+ <h1>NEXUS GAMING STORE</h1>
+ <h3>NEXT LEVEL GAMING EXPERIENCE</h3>
+ <p>SHOP ACC FREE FIRE UY TÍN</p>
+ <button onclick="go('shop')">KHÁM PHÁ SHOP</button>
+</div>
+
+<section id="shop">
+ <h2>🔥 SHOP ACC FREE FIRE</h2>
+ <div class="grid" id="products"></div>
+</section>
+
+<section id="nap">
+ <h2>💳 NẠP THẺ</h2>
+ <div class="panel">
+  <h3>Nạp Mobifone / Garena</h3>
+  <select id="provider">
+   <option>Mobifone</option>
+   <option>Garena</option>
+  </select>
+  <select id="value">
+   <option>10.000đ</option>
+   <option>20.000đ</option>
+   <option>50.000đ</option>
+   <option>100.000đ</option>
+   <option>200.000đ</option>
+   <option>500.000đ</option>
+  </select>
+  <button onclick="contactNap()">LIÊN HỆ NẠP THẺ</button>
+  <p class="small">Giao dịch được xác nhận qua shop.
+  Không gửi mã thẻ hoặc số serial qua website chưa bảo mật.</p>
+ </div>
+</section>
+
+<section id="game">
+ <h2>💎 DỊCH VỤ NẠP GAME</h2>
+ <div class="grid">
+  <div class="panel">
+   <h3>💎 Free Fire</h3>
+   <input id="ffid" placeholder="ID Free Fire">
+   <select id="ffpack">
+    <option>Gói 50 kim cương</option>
+    <option>Gói 100 kim cương</option>
+    <option>Gói 300 kim cương</option>
+   </select>
+   <button onclick="gameContact('Free Fire')">ĐẶT NẠP</button>
+  </div>
+  <div class="panel">
+   <h3>🛡️ Liên Quân</h3>
+   <input id="lqid" placeholder="ID Liên Quân">
+   <select id="lqpack">
+    <option>Gói Quân Huy 20.000đ</option>
+    <option>Gói Quân Huy 50.000đ</option>
+    <option>Gói Quân Huy 100.000đ</option>
+   </select>
+   <button onclick="gameContact('Liên Quân')">ĐẶT NẠP</button>
+  </div>
+ </div>
+</section>
+
+<section id="contact">
+ <h2>📞 LIÊN HỆ SHOP</h2>
+ <div class="panel">
+  <h3>NEXUS GAMING STORE</h3>
+  <p>Zalo: 0933454413</p>
+  <a href="https://zalo.me/0933454413">
+   <button>CHAT ZALO NGAY</button>
+  </a>
+ </div>
+</section>
+
+<footer>
+ <h3>NEXUS GAMING STORE</h3>
+ <p>© 2026 Nexus Gaming Store</p>
+ <p>Free Fire | Liên Quân Mobile</p>
+</footer>
+
+<a class="zalo" href="https://zalo.me/0933454413">
+ ZALO SHOP
+</a>
+
+<script>
+const accounts=[
+ {name:"ACC FREE FIRE 999K",price:999000,
+  desc:"Tài khoản Free Fire"},
+ {name:"ACC FREE FIRE 499K",price:499000,
+  desc:"Tài khoản Free Fire"},
+ {name:"ACC FREE FIRE 399K",price:399000,
+  desc:"Tài khoản Free Fire"},
+ {name:"ACC FREE FIRE 99K",price:99000,
+  desc:"Tài khoản Free Fire"}
+];
+
+function money(n){
+ return n.toLocaleString("vi-VN")+"đ";
+}
+
+function render(){
+ document.getElementById("products").innerHTML=
+ accounts.map((a,i)=>`
+ <div class="card">
+  <div class="art">🎮</div>
+  <h3>${a.name}</h3>
+  <p>${a.desc}</p>
+  <div class="price">${money(a.price)}</div>
+  <button onclick="buy(${i})">🛒 MUA NGAY</button>
+ </div>
+ `).join("");
+}
+
+function buy(i){
+ const a=accounts[i];
+ const msg=encodeURIComponent(
+  "Xin chào Nexus Gaming Store! Tôi muốn mua "+
+  a.name+" giá "+money(a.price)
+ );
+ window.open("https://zalo.me/0933454413?text="+msg,"_blank");
+}
+
+function contactNap(){
+ const p=document.getElementById("provider").value;
+ const v=document.getElementById("value").value;
+ const msg=encodeURIComponent(
+  "Tôi muốn hỏi về nạp thẻ "+p+" mệnh giá "+v
+ );
+ window.open("https://zalo.me/0933454413?text="+msg,"_blank");
+}
+
+function gameContact(game){
+ const id=game==="Free Fire"?
+ document.getElementById("ffid").value:
+ document.getElementById("lqid").value;
+ const pack=game==="Free Fire"?
+ document.getElementById("ffpack").value:
+ document.getElementById("lqpack").value;
+
+ if(!id.trim()){
+  alert("Vui lòng nhập ID game!");
+  return;
+ }
+ const msg=encodeURIComponent(
+  "Tôi muốn đặt nạp "+game+
+  " | ID: "+id+" | Gói: "+pack
+ );
+ window.open("https://zalo.me/0933454413?text="+msg,"_blank");
+}
+
+function go(id){
+ document.getElementById(id).scrollIntoView({
+  behavior:"smooth"
+ });
+}
+render();
+</script>
+
+</body>
+</html>
